@@ -23,8 +23,8 @@ resource "tls_self_signed_cert" "ca" {
 
 # Write the CA key to file
 resource "local_file" "ca_key" {
-  content  = "${tls_private_key.ca.private_key_pem}"
-  filename = "${path.module}/ca.key.pem"
+  sensitive_content  = "${tls_private_key.ca.private_key_pem}"
+  filename           = "${path.module}/ca.key.pem"
 }
 
 # Write the CA cert to file
@@ -55,8 +55,8 @@ resource "tls_cert_request" "tiller" {
 
 # Write the Tiller Server key to file
 resource "local_file" "tiller_key" {
-  content  = "${tls_private_key.tiller.private_key_pem}"
-  filename = "${path.module}/tiller.key.pem"
+  sensitive_content  = "${tls_private_key.tiller.private_key_pem}"
+  filename           = "${path.module}/tiller.key.pem"
 }
 
 # Write the Tiller Server cert to file
@@ -103,8 +103,8 @@ resource "tls_locally_signed_cert" "helm" {
 
 # Write the Helm Client key to file
 resource "local_file" "helm_key" {
-  content  = "${tls_private_key.helm.private_key_pem}"
-  filename = "${path.module}/helm.key.pem"
+  sensitive_content  = "${tls_private_key.helm.private_key_pem}"
+  filename           = "${path.module}/helm.key.pem"
 }
 
 # Write the Helm Client cert to file
