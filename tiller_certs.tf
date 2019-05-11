@@ -1,3 +1,12 @@
+provider "tls" {
+  version = "~> 2.0"
+}
+
+# sensitive_content parameter is supported from version 1.2
+provider "local" {
+  version = ">= 1.2"
+}
+
 # Generate the Tiller CA key
 resource "tls_private_key" "ca" {
   algorithm = "RSA"
